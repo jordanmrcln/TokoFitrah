@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fitrah Sparepart Motor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+      .welcome-section {
+        position: relative;
+        z-index: 1;
+        background: rgba(130, 127, 127, 0.8);
+        padding: 20px;
+        border-radius: 8px;
+      }
+      .welcome-section img {
+        margin-bottom: 20px;
+      }
+      .product-card {
+        display: none;
+        cursor: pointer;
+      }
+      .cart-counter {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(50%, -50%);
+        background: red;
+        color: white;
+        border-radius: 50%;
+        padding: 2px 8px;
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="https://i.pinimg.com/originals/a0/0b/e5/a00be55e375849108396f10c0027e236.png" alt="Logo Ban Motor" width="30" height="30" class="d-inline-block align-text-top">
+          Fitrah Sparepart
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigasi">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#produk">Produk</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#kontak">Kontak</a>
+            </li>
+          </ul>
+          <form class="d-flex ms-auto" onsubmit="searchProducts(event)">
+            <input class="form-control me-2" type="search" id="searchInput" placeholder="Cari Produk" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Cari</button>
+          </form>
+          <div class="ms-3 position-relative">
+            <button class="btn btn-outline-light position-relative" type="button" data-bs-toggle="modal" data-bs-target="#cartModal">
+              Keranjang <span id="cartCounter" class="cart-counter">0</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-5 welcome-section text-center">
+      <img src="https://i.pinimg.com/originals/a0/0b/e5/a00be55e375849108396f10c0027e236.png" alt="Logo Ban Motor" width="50" height="50">
+      <h1>Selamat Datang di Fitrah Sparepart Motor</h1>
+      <p>Toko lengkap untuk segala kebutuhan sparepart motor Anda.</p>
+    </div>
+
+    <div id="produk" class="container mt-5">
+      <h2 class="text-center">Produk Kami</h2>
+      <div class="row" id="productList">
+        <div class="col-md-4 product-card" data-name="Rantai Motor" data-price="Rp 750.000" onclick="showProductDetail(this)">
+          <div class="card">
+            <img src="https://asset.kompas.com/crops/KVfwlkVa2gVYnAZOlKHJj1ZLiLI=/195x0:780x390/750x500/data/photo/2015/10/19/1108153rantai-pas780x390.jpg" class="card-img-top" alt="Rantai Motor">
+            <div class="card-body">
+              <h5 class="card-title">Rantai Motor</h5>
+              <p class="card-text">Rp 750.000</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 product-card" data-name="Kampas Rem" data-price="Rp 450.000" onclick="showProductDetail(this)">
+          <div class="card">
+            <img src="https://th.bing.com/th/id/OIP.MKwSlIYVimtBVn8OxKiiCwAAAA?rs=1&pid=ImgDetMain" class="card-img-top" alt="Kampas Rem">
+            <div class="card-body">
+              <h5 class="card-title">Kampas Rem</h5>
+              <p class="card-text">Rp </p>100.000
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 product-card" data-name="Filter Oli" data-price="Rp 225.000" onclick="showProductDetail(this)">
+          <div class="card">
+            <img src="https://th.bing.com/th/id/OIP.LIQmtIQzWO0-n2cMO0X7hAHaEN?rs=1&pid=ImgDetMain" class="card-img-top" alt="Filter Oli">
+            <div class="card-body">
+              <h5 class="card-title">Filter Oli</h5>
+              <p class="card-text">Rp 225.000</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 product-card" data-name="Ban Depan/Belakang" data-price="Rp 450.000" onclick="showProductDetail(this)">
+          <div class="card">
+            <img src="https://cf.shopee.co.id/file/790f70a680b8dfef6d2d62723098b253" class="card-img-top" alt="Ban Depan/Belakang">
+            <div class="card-body">
+              <h5 class="card-title">Ban Depan/Belakang</h5>
+              <p class="card-text">Rp 700.000</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 product-card" data-name="Velg Bintang" data-price="Rp 450.000" onclick="showProductDetail(this)">
+          <div class="card">
+            <img src="https://cf.shopee.co.id/file/sg-11134201-23010-clu261qnhpmv80" class="card-img-top" alt="Velg Bintang">
+            <div class="card-body">
+              <h5 class="card-title">Velg Bintang</h5>
+              <p class="card-text">Rp 750.000</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 product-card" data-name="Oli" data-price="Rp 450.000" onclick="showProductDetail(this)">
+          <div class="card">
+            <img src="https://s2.bukalapak.com/uploads/content_attachments/4447/original/oli4.jpg" class="card-img-top" alt="Oli">
+            <div class="card-body">
+              <h5 class="card-title">Oli</h5>
+              <p class="card-text">Rp 100.000</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Detail Produk -->
+    <div class="modal fade" id="productDetailModal" tabindex="-1" aria-labelledby="productDetailModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="productDetailModalLabel">Detail Produk</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img id="productDetailImage" src="" class="img-fluid mb-3" alt="Detail Produk">
+            <h5 id="productDetailName"></h5>
+            <p id="productDetailPrice"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-primary" onclick="addToCart()">Tambah ke Keranjang</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Keranjang -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="cartModalLabel">Keranjang Belanja</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul id="cartItems" class="list-group">
+              <li class="list-group-item">Keranjang belanja Anda kosong.</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            <button type="button" class="btn btn-primary">Lanjut ke Pembayaran</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="kontak" class="container mt-5">
+      <h2>Kontak Kami</h2>
+      <form>
+        <div class="mb-3">
+          <label for="nama" class="form-label">Nama</label>
+          <input type="text" class="form-control" id="nama" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Alamat Email</label>
+          <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="pesan" class="form-label">Pesan</label>
+          <textarea class="form-control" id="pesan" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Kirim</button>
+      </form>
+    </div>
+
+    <footer class="bg-dark text-white text-center p-3 mt-5">
+      <p>&copy; 2024 Fitrah Sparepart Motor. Hak cipta dilindungi undang-undang.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+      let cart = [];
+      
+      document.addEventListener("DOMContentLoaded", function() {
+        const productCards = document.querySelectorAll(".product-card");
+        productCards.forEach(card => card.style.display = "block");
+      });
+
+      function searchProducts(event) {
+        event.preventDefault();
+        const searchInput = document.getElementById("searchInput").value.toLowerCase();
+        const productCards = document.querySelectorAll(".product-card");
+
+        productCards.forEach(card => {
+          const productName = card.getAttribute("data-name").toLowerCase();
+          if (productName.includes(searchInput)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+
+      function showProductDetail(card) {
+        const productName = card.getAttribute("data-name");
+        const productImage = card.querySelector(".card-img-top").src;
+        const productPrice = card.getAttribute("data-price");
+
+        document.getElementById("productDetailName").innerText = productName;
+        document.getElementById("productDetailImage").src = productImage;
+        document.getElementById("productDetailPrice").innerText = productPrice;
+
+        const productDetailModal = new bootstrap.Modal(document.getElementById("productDetailModal"));
+        productDetailModal.show();
+      }
+
+      function addToCart() {
+        const productName = document.getElementById("productDetailName").innerText;
+        const productPrice = document.getElementById("productDetailPrice").innerText;
+
+        cart.push({ name: productName, price: productPrice });
+        updateCartCounter();
+        updateCartModal();
+
+        const productDetailModal = bootstrap.Modal.getInstance(document.getElementById("productDetailModal"));
+        productDetailModal.hide();
+      }
+
+      function updateCartCounter() {
+        document.getElementById("cartCounter").innerText = cart.length;
+      }
+
+      function updateCartModal() {
+        const cartItemsList = document.getElementById("cartItems");
+        cartItemsList.innerHTML = "";
+        
+        if (cart.length === 0) {
+          cartItemsList.innerHTML = "<li class='list-group-item'>Keranjang belanja Anda kosong.</li>";
+        } else {
+          cart.forEach(item => {
+            const listItem = document.createElement("li");
+            listItem.className = "list-group-item";
+            listItem.innerText = `${item.name} - ${item.price}`;
+            cartItemsList.appendChild(listItem);
+          });
+        }
+      }
+    </script>
+  </body>
+</html>
